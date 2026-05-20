@@ -102,10 +102,11 @@ export default function Onboarding({ onComplete }) {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-8 grid grid-cols-1 md:grid-cols-12 gap-12 mt-8">
+    // Reduced padding and gaps on mobile, expands on 'md' screens
+    <div className="max-w-6xl mx-auto p-4 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mt-4 md:mt-8">
       
-      {/* LEFT SIDEBAR: Progress Tracker */}
-      <div className="md:col-span-4 pl-4 mt-8">
+      {/* LEFT SIDEBAR: Hidden on mobile */}
+      <div className="hidden md:block md:col-span-4 pl-4 mt-8">
         <h1 className="text-4xl font-medium mb-4 text-gray-900">Let's get you set up in<br/>just 4 steps</h1>
         <p className="text-gray-500 mb-12 text-sm leading-relaxed pr-8">
           We'll keep it short and simple, just what we need to personalize your experience.
@@ -139,18 +140,18 @@ export default function Onboarding({ onComplete }) {
       </div>
 
       {/* RIGHT SIDE: Dynamic Form Container */}
-      <div className="md:col-span-8 bg-white p-12 rounded-[2rem] shadow-sm border border-gray-100 min-h-[600px] flex flex-col">
+      <div className="col-span-1 md:col-span-8 bg-white p-6 md:p-12 rounded-2xl md:rounded-[2rem] shadow-sm border border-gray-100 min-h-[500px] md:min-h-[600px] flex flex-col">
         
         {/* STEP 1a: CREATE ACCOUNT */}
         {step === 1 && subStep === '1a' && (
           <div className="flex flex-col h-full animate-fade-in">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-medium text-gray-900">Let's start with the basics</h2>
+            <div className="flex justify-between items-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-medium text-gray-900">Let's start with the basics</h2>
               <span className="text-gray-400 font-medium">1/4</span>
             </div>
-            <p className="text-gray-500 mb-8">Enter your email and set a secure password. This helps us keep your account safe and ready for future logins.</p>
+            <p className="text-gray-500 mb-6 md:mb-8 text-sm md:text-base">Enter your email and set a secure password. This helps us keep your account safe and ready for future logins.</p>
 
-            <div className="space-y-5 flex-grow">
+            <div className="space-y-4 md:space-y-5 flex-grow">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Your email address" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
@@ -166,9 +167,7 @@ export default function Onboarding({ onComplete }) {
             </div>
 
             <div className="mt-8">
-              <button onClick={handleCreateAccount} className="w-full bg-indigo-600 text-white py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors">
-                Create Account
-              </button>
+              <button onClick={handleCreateAccount} className="w-full bg-indigo-600 text-white py-3 md:py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors">Create Account</button>
               
               <div className="text-center mt-4 text-sm text-gray-500">
                 Already have an account? <span onClick={onComplete} className="text-indigo-600 font-medium cursor-pointer hover:underline">Log in</span>
@@ -180,8 +179,7 @@ export default function Onboarding({ onComplete }) {
                 <div className="flex-grow border-t border-gray-200"></div>
               </div>
 
-              {/* MOCK GOOGLE AUTH: Skips directly to Step 2 */}
-              <button onClick={() => setStep(2)} className="w-full bg-white border border-gray-200 text-gray-700 py-3.5 rounded-lg font-medium flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+              <button onClick={() => setStep(2)} className="w-full bg-white border border-gray-200 text-gray-700 py-3 md:py-3.5 rounded-lg font-medium flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors text-sm md:text-base">
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -197,17 +195,17 @@ export default function Onboarding({ onComplete }) {
         {/* STEP 1b: VERIFY EMAIL */}
         {step === 1 && subStep === '1b' && (
           <div className="flex flex-col h-full animate-fade-in">
-            <button onClick={() => setSubStep('1a')} className="text-gray-500 flex items-center gap-2 mb-8 hover:text-gray-800 transition-colors w-fit">
+            <button onClick={() => setSubStep('1a')} className="text-gray-500 flex items-center gap-2 mb-6 md:mb-8 hover:text-gray-800 transition-colors w-fit">
               <span>‹</span> Back
             </button>
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-3xl font-medium text-gray-900">Verify Email address</h2>
+              <h2 className="text-2xl md:text-3xl font-medium text-gray-900">Verify Email address</h2>
               <span className="text-gray-400 font-medium">1/4</span>
             </div>
-            <p className="text-gray-500 mb-8">A six digit verification code has been sent to your email address, enter it here to verify your account</p>
-            <div className="flex gap-4 mb-4 justify-center">
+            <p className="text-gray-500 mb-8 text-sm md:text-base">A six digit verification code has been sent to your email address, enter it here to verify your account</p>
+            <div className="flex gap-2 md:gap-4 mb-4 justify-center">
               {verificationCode.map((digit, index) => (
-                <input key={index} id={`digit-${index}`} type="text" maxLength="1" value={digit} onChange={(e) => handleDigitChange(index, e.target.value)} className="w-14 h-14 text-center text-2xl font-medium border border-gray-200 rounded-lg outline-none focus:border-indigo-600 transition-all" />
+                <input key={index} id={`digit-${index}`} type="text" maxLength="1" value={digit} onChange={(e) => handleDigitChange(index, e.target.value)} className="w-10 h-10 md:w-14 md:h-14 text-center text-xl md:text-2xl font-medium border border-gray-200 rounded-lg outline-none focus:border-indigo-600 transition-all" />
               ))}
             </div>
             <div className="text-right text-sm text-gray-500 mb-8 pr-4">
@@ -216,7 +214,7 @@ export default function Onboarding({ onComplete }) {
               </span>
             </div>
             <div className="mt-auto">
-              <button onClick={() => setStep(2)} className="w-full bg-indigo-600 text-white py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors">Verify</button>
+              <button onClick={() => setStep(2)} className="w-full bg-indigo-600 text-white py-3 md:py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors">Verify</button>
             </div>
           </div>
         )}
@@ -224,38 +222,38 @@ export default function Onboarding({ onComplete }) {
         {/* STEP 2: TELL US ABOUT YOU */}
         {step === 2 && (
           <div className="flex flex-col h-full animate-fade-in">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-medium text-gray-900">Who's joining us?</h2>
+            <div className="flex justify-between items-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-medium text-gray-900">Who's joining us?</h2>
               <span className="text-gray-400 font-medium">2/4</span>
             </div>
-            <p className="text-gray-500 mb-8">We'd love to know your name and role so we can tailor the experience to how you work best, whether you are solo or with a team.</p>
-            <div className="space-y-6 flex-grow">
+            <p className="text-gray-500 mb-6 md:mb-8 text-sm md:text-base">We'd love to know your name and role so we can tailor the experience to how you work best, whether you are solo or with a team.</p>
+            <div className="space-y-4 md:space-y-6 flex-grow">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">What should we call you?</label>
-                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="eg., Opeyemi Sam" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="eg., Orimadegun Promise" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">What's your role?</label>
-                <input type="text" name="role" value={formData.role} onChange={handleInputChange} placeholder="eg., DevOps Developer" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
+                <input type="text" name="role" value={formData.role} onChange={handleInputChange} placeholder="eg., Product designer" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-4">Are you working solo or with a team?</label>
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   {['Just me', '2–10 teammates', '11–50 teammates', '50+ teammates'].map(size => (
                     <label key={size} className="flex items-center gap-3 cursor-pointer group">
                       <div className="relative flex items-center justify-center">
                         <input type="radio" name="teamSize" value={size} checked={formData.teamSize === size} onChange={() => handleTeamSizeChange(size)} className="peer appearance-none w-5 h-5 border border-gray-300 rounded-full checked:border-indigo-600 cursor-pointer" />
                         <div className="absolute w-3 h-3 bg-indigo-600 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"></div>
                       </div>
-                      <span className="text-gray-700">{size}</span>
-                      {size !== 'Just me' && <span className="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full ml-auto">Premium</span>}
+                      <span className="text-gray-700 text-sm md:text-base">{size}</span>
+                      {size !== 'Just me' && <span className="text-[10px] md:text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full ml-auto">Premium</span>}
                     </label>
                   ))}
                 </div>
               </div>
             </div>
-            <div className="mt-8 flex gap-4">
-              <button onClick={() => { setStep(1); setSubStep('1b'); }} className="px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">Back</button>
+            <div className="mt-8 flex flex-col-reverse md:flex-row gap-3 md:gap-4">
+              <button onClick={() => { setStep(1); setSubStep('1b'); }} className="w-full md:w-auto px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">Back</button>
               <button onClick={() => { setStep(3); setSubStep('3a'); }} className="flex-1 bg-indigo-600 text-white py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors">Continue</button>
             </div>
           </div>
@@ -264,42 +262,42 @@ export default function Onboarding({ onComplete }) {
         {/* STEP 3a: WORKSPACE NAME */}
         {step === 3 && subStep === '3a' && (
           <div className="flex flex-col h-full animate-fade-in">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-medium text-gray-900">Create your workspace</h2>
+            <div className="flex justify-between items-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-medium text-gray-900">Create your workspace</h2>
               <span className="text-gray-400 font-medium">3/4</span>
             </div>
-            <p className="text-gray-500 mb-8">Name your workspace to keep things organized.</p>
+            <p className="text-gray-500 mb-6 md:mb-8 text-sm md:text-base">Name your workspace to keep things organized.</p>
             <div className="space-y-6 flex-grow">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">What's the name of your workspace?</label>
-                <input type="text" name="workspaceName" value={formData.workspaceName} onChange={handleInputChange} placeholder="eg., Alpha Hub" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
+                <input type="text" name="workspaceName" value={formData.workspaceName} onChange={handleInputChange} placeholder="eg., Nexa team" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
               </div>
             </div>
-            <div className="mt-8 flex gap-4">
-              <button onClick={() => setStep(2)} className="px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">Back</button>
+            <div className="mt-8 flex flex-col-reverse md:flex-row gap-3 md:gap-4">
+              <button onClick={() => setStep(2)} className="w-full md:w-auto px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">Back</button>
               <button onClick={handleStep3aContinue} className="flex-1 bg-indigo-600 text-white py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors">Continue</button>
             </div>
           </div>
         )}
 
-        {/* STEP 3b: INVITE TEAMMATES (Only shown if teamSize !== 'Just me') */}
+        {/* STEP 3b: INVITE TEAMMATES */}
         {step === 3 && subStep === '3b' && (
           <div className="flex flex-col h-full animate-fade-in">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-medium text-gray-900">Invite teammates by email</h2>
+            <div className="flex justify-between items-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-medium text-gray-900">Invite teammates</h2>
               <span className="text-gray-400 font-medium">3/4</span>
             </div>
-            <p className="text-gray-500 mb-8">Add their email addresses so they can join your workspace right away.</p>
+            <p className="text-gray-500 mb-6 md:mb-8 text-sm md:text-base">Add their email addresses so they can join your workspace right away.</p>
             <div className="space-y-6 flex-grow">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Enter Email Address?</label>
-                <textarea name="invitedEmails" value={formData.invitedEmails} onChange={handleInputChange} placeholder="eg., pete@gmail.com, john@jane.com (separate with commas)" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all resize-none h-32" />
+                <label className="block text-sm font-medium text-gray-700 mb-1">Enter Email Address</label>
+                <textarea name="invitedEmails" value={formData.invitedEmails} onChange={handleInputChange} placeholder="eg., adebanjo@gmail.com (separate with commas)" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all resize-none h-32 text-sm md:text-base" />
               </div>
             </div>
-            <div className="mt-8 flex gap-4 items-center">
-              <button onClick={() => setSubStep('3a')} className="px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">Back</button>
-              <button onClick={() => setStep(4)} className="px-6 py-3.5 text-indigo-600 font-medium hover:underline ml-auto">Skip for later</button>
-              <button onClick={() => setStep(4)} className="bg-indigo-600 text-white px-8 py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors">Continue</button>
+            <div className="mt-8 flex flex-col md:flex-row gap-3 md:gap-4 items-center">
+              <button onClick={() => setSubStep('3a')} className="w-full md:w-auto px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors order-3 md:order-1">Back</button>
+              <button onClick={() => setStep(4)} className="text-indigo-600 font-medium hover:underline w-full md:w-auto md:ml-auto order-2">Skip for later</button>
+              <button onClick={() => setStep(4)} className="w-full md:w-auto bg-indigo-600 text-white px-8 py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors order-1 md:order-3">Continue</button>
             </div>
           </div>
         )}
@@ -307,32 +305,32 @@ export default function Onboarding({ onComplete }) {
         {/* STEP 4: FOCUS */}
         {step === 4 && (
           <div className="flex flex-col h-full animate-fade-in">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-medium text-gray-900">What do you want to achieve?</h2>
+            <div className="flex justify-between items-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-medium text-gray-900">What do you want to achieve?</h2>
               <span className="text-gray-400 font-medium">4/4</span>
             </div>
-            <p className="text-gray-500 mb-8">Choose a use case so we can recommend the right tools and templates to get you started faster. You can always change this later.</p>
+            <p className="text-gray-500 mb-6 md:mb-8 text-sm md:text-base">Choose a use case so we can recommend the right tools to get you started faster.</p>
             
-            <div className="grid grid-cols-2 gap-4 flex-grow content-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 flex-grow content-start">
               {[
-                { name: 'Manage projects or tasks', icon: '📋' },
-                { name: 'Collaborate with my team', icon: '💬' },
-                { name: 'Track performance or KPIs', icon: '📈' },
-                { name: 'Design workflows or systems', icon: '⚙️' },
-                { name: 'Just exploring for now', icon: '👀' }
+                { name: 'Manage projects', icon: '📋' },
+                { name: 'Collaborate with team', icon: '💬' },
+                { name: 'Track KPIs', icon: '📈' },
+                { name: 'Design workflows', icon: '⚙️' },
+                { name: 'Just exploring', icon: '👀' }
               ].map(focusItem => (
-                <label key={focusItem.name} className={`border p-5 rounded-xl cursor-pointer transition-all ${formData.focus === focusItem.name ? 'border-indigo-600 bg-indigo-50 shadow-sm' : 'border-gray-200 hover:border-indigo-300'}`}>
+                <label key={focusItem.name} className={`border p-4 md:p-5 rounded-xl cursor-pointer transition-all flex items-center gap-4 sm:flex-col sm:items-start ${formData.focus === focusItem.name ? 'border-indigo-600 bg-indigo-50 shadow-sm' : 'border-gray-200 hover:border-indigo-300'}`}>
                   <input type="radio" name="focus" value={focusItem.name} checked={formData.focus === focusItem.name} onChange={handleInputChange} className="hidden" />
-                  <div className="text-2xl mb-2">{focusItem.icon}</div>
+                  <div className="text-2xl">{focusItem.icon}</div>
                   <span className={`block font-medium text-sm ${formData.focus === focusItem.name ? 'text-indigo-800' : 'text-gray-700'}`}>{focusItem.name}</span>
                 </label>
               ))}
             </div>
             
-            <div className="mt-8 flex items-center gap-4 pt-4 border-t border-gray-100">
-              <button onClick={handleBackFromStep4} className="px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">Back</button>
-              <button onClick={handleSubmit} className="px-4 py-3.5 text-indigo-600 font-medium hover:underline ml-auto">Skip for later</button>
-              <button onClick={handleSubmit} className="bg-indigo-600 text-white px-8 py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors shadow-sm">Finish Onboarding</button>
+            <div className="mt-8 flex flex-col md:flex-row items-center gap-3 md:gap-4 pt-4 border-t border-gray-100">
+              <button onClick={handleBackFromStep4} className="w-full md:w-auto px-6 py-3.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors order-3 md:order-1">Back</button>
+              <button onClick={handleSubmit} className="text-indigo-600 font-medium hover:underline w-full md:w-auto md:ml-auto order-2 py-2 md:py-0">Skip for later</button>
+              <button onClick={handleSubmit} className="w-full md:w-auto bg-indigo-600 text-white px-8 py-3.5 rounded-lg font-medium hover:bg-indigo-700 transition-colors shadow-sm order-1 md:order-3">Finish Onboarding</button>
             </div>
           </div>
         )}
