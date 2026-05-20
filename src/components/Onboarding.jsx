@@ -80,7 +80,7 @@ export default function Onboarding({ onComplete }) {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/users/onboarding', {
+      const response = await fetch('https://oban-backend.onrender.com/api/users/onboarding', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -97,7 +97,7 @@ export default function Onboarding({ onComplete }) {
       }
     // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      alert("Network Error: Could not reach the backend at localhost:5000.");
+      alert("Network Error: Could not reach the backend at https://oban-backend.onrender.com.");
     }
   };
 

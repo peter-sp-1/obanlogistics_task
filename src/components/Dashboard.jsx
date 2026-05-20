@@ -8,7 +8,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/users/dashboard-data');
+        const response = await fetch('https://oban-backend.onrender.com/api/users/dashboard-data');
         if (response.ok) {
           const data = await response.json();
           setUsers(data);
