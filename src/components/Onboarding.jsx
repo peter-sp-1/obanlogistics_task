@@ -230,11 +230,11 @@ export default function Onboarding({ onComplete }) {
             <div className="space-y-4 md:space-y-6 flex-grow">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">What should we call you?</label>
-                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="eg., Orimadegun Promise" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="eg., Sam Pete" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">What's your role?</label>
-                <input type="text" name="role" value={formData.role} onChange={handleInputChange} placeholder="eg., Product designer" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
+                <input type="text" name="role" value={formData.role} onChange={handleInputChange} placeholder="eg., DevOps Engineer" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-4">Are you working solo or with a team?</label>
@@ -270,7 +270,7 @@ export default function Onboarding({ onComplete }) {
             <div className="space-y-6 flex-grow">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">What's the name of your workspace?</label>
-                <input type="text" name="workspaceName" value={formData.workspaceName} onChange={handleInputChange} placeholder="eg., Nexa team" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
+                <input type="text" name="workspaceName" value={formData.workspaceName} onChange={handleInputChange} placeholder="eg., Alpha Hub" className="w-full border border-gray-200 rounded-lg p-3 outline-none focus:border-indigo-600 transition-all" />
               </div>
             </div>
             <div className="mt-8 flex flex-col-reverse md:flex-row gap-3 md:gap-4">
